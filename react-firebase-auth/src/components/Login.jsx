@@ -66,8 +66,12 @@ const Login = () => {
               Log In
             </Button>
           </div>
-          <p><Link to="/resetPassword">Forgot Password</Link></p>
+          <div className="float-end">
+          <p ><Link to="/resetPassword">Forget Password</Link></p>
+          </div>
+         
         </Form>
+        <br/>
         <hr />
         <div className='p-2'>
           <GoogleButton
