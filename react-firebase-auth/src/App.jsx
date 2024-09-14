@@ -7,6 +7,7 @@ import Home from './components/Home'
 import {UserAuthContextProvider} from './context/UserAuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
 import ResetPassword from './components/ResetPassword';
+import PhoneSignUp from './components/PhoneSignUP';
 const App = () => {
   return (
     <BrowserRouter>
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/home" element={<ProtectedRoute> <Home /></ProtectedRoute>  }/>
         <Route path="/resetPassword" element={<ResetPassword/>}/>
+        <Route path="/phonesignup" element={<PhoneSignUp/>}/>
        </Routes>
       </UserAuthContextProvider>
     </BrowserRouter>

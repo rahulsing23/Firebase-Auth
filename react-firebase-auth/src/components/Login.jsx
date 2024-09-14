@@ -81,6 +81,11 @@ const Login = () => {
             onClick={handleGoogleSignIn}
           />
         </div>
+        <Link to="/phonesignup">
+          <div className="p-2">
+            <Button variant='success' type='submit' style={{width: '400px', height:'50px'}}> Sign in with phone</Button>
+          </div>
+        </Link>
       </div>
       <div className="p-4 box mt-3 text-center">
         Don't have an account? <Link to="/signup">Sign up</Link>

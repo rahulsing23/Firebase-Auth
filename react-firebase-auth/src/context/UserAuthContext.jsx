@@ -7,6 +7,8 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   sendPasswordResetEmail,
+  RecaptchaVerifier,
+  signInWithPhoneNumber
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -38,6 +40,12 @@ export function UserAuthContextProvider({ children }) {
     
   }
 
+  function setUpRecaptcha(number){
+    const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {});
+    recaptchaVerifier.render()
+    return signInWithPhoneNumber(auth, number, recaptchaVerifier);
+
+  }
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       console.log('Auth', currentuser);
@@ -51,7 +59,7 @@ export function UserAuthContextProvider({ children }) {
 
   return (
     <userAuthContext.Provider
-      value={{ user, signUp, login, logOut, googleSignIn, resetPassword }}
+      value={{ user, signUp, login, logOut, googleSignIn, resetPassword, setUpRecaptcha }}
     >
       {children}
     </userAuthContext.Provider>
