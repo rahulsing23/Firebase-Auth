@@ -9,7 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const {login} = useUserAuth()
+  const {login, googleSignIn} = useUserAuth()
   const navigate = useNavigate()
 
 
@@ -24,6 +24,19 @@ const Login = () => {
       setError(error.message)
     }
   }
+
+  const handleGoogleSignIn = async (e) =>{
+    e.preventDefault();
+    try {
+      await googleSignIn();
+      navigate('/home')
+    } catch (error) {
+      setError(error.message)
+    }
+  }
+
+
+
   return (
     <div>
       <div className="p-4 box">
@@ -60,6 +73,7 @@ const Login = () => {
             className="g-btn"
             style={{width:'400px'}}
             type="dark"
+            onClick={handleGoogleSignIn}
           />
         </div>
       </div>
