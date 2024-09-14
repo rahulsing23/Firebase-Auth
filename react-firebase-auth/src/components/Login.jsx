@@ -66,6 +66,7 @@ const Login = () => {
               Log In
             </Button>
           </div>
+          <p><Link to="/resetPassword">Forgot Password</Link></p>
         </Form>
         <hr />
         <div className='p-2'>

@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Home from './components/Home'
 import {UserAuthContextProvider} from './context/UserAuthContext'
 import ProtectedRoute from './components/ProtectedRoute'
+import ResetPassword from './components/ResetPassword';
 const App = () => {
   return (
     <BrowserRouter>
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/" element={<Login/>}/>
         <Route path="/signup" element={<Signup/>}/>
         <Route path="/home" element={<ProtectedRoute> <Home /></ProtectedRoute>  }/>
+        <Route path="/resetPassword" element={<ResetPassword/>}/>
        </Routes>
       </UserAuthContextProvider>
     </BrowserRouter>
