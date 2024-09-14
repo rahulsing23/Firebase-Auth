@@ -1,19 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import GoogleButton from 'react-google-button'
-import {Form, Button} from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import {Form, Button, Alert} from 'react-bootstrap'
+import { Link, useNavigate } from 'react-router-dom'
+import {useUserAuth} from '../context/UserAuthContext'
+
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const {login} = useUserAuth()
+  const navigate = useNavigate()
+
+
+  const handleSubmit = async (e) =>{
+    e.preventDefault();
+    setError("")
+    try {
+      await login(email, password)
+      navigate("/home")
+    } catch (error) {
+  
+      setError(error.message)
+    }
+  }
   return (
     <div>
       <div className="p-4 box">
         <h2 className="mb-5 text-center">Login</h2>
-        <Form>
+        { error && <Alert variant='danger'>{error}</Alert>}
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3 p-2" controlId="formBasicEmail">
             <Form.Control
               type="email"
               placeholder="Email address"
               className='p-2'
+              onChange={(e) => setEmail(e.target.value)}
             />
           </Form.Group>
 
@@ -22,7 +44,7 @@ const Login = () => {
               type="password"
               placeholder="Password"
               className='p-2'
-        
+              onChange={(e) => setPassword(e.target.value)}
             />
           </Form.Group>
 
