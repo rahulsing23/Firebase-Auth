@@ -1,7 +1,5 @@
-# Firebase-Auth
 
-
-# Project Title
+# React Firebase Auth
 
 Create a proper authentication system using firebase and React.js
 
@@ -122,8 +120,4 @@ React.js Firebase Javascript
 - Use useContext hook after building required functionality
 
 - Know more about react hooks : https://react.dev/reference/react/hooks
-
-
-
-
 
